@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LWCH3DW3P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3LWCH3DW3P');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KFZS2T24');</script>
+    <!-- End Google Tag Manager -->
+
+    <title>三哥下午茶價格計算器 (非官方)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFZS2T24" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="jumbotron text-center" style="background:url('./img/background.jpg')">
+        <img src="./img/logo.png" class="img-responsive center-block">
+        <h1>三哥下午茶價格計算器 (非官方)</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p id="choice" class="text-center"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">價格: </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="display_result">
+            <div class="col-md-12">
+                <p class="text-center"><input readonly id="display" class="text-center" type="text" name="display"
+                        value="0"></p>
+            </div>
+        </div>
+    </div>
+    <div class="calculator">
+        <div id="menu">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center"><img src="./img/rice.png" class="img-responsive center-block">
+                        <input id="A1" type="button" value="茶餐A - 白飯">
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-center"> <img src="./img/pork_rice.png" class="img-responsive center-block">
+                        <input id="A2" type="button" value="茶餐A - 三哥乍醬飯">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center"><img src="./img/rice_noodle_1.png" class="img-responsive center-block">
+                        <input id="B1" type="button" value="茶餐B - 迷你兩餸米線">
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-center"><img src="./img/rice_noodle_2.png" class="img-responsive center-block">
+                        <input id="B2" type="button" value="茶餐B - 迷你三餸米線">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center"><img src="./img/sandwich_1.png" class="img-responsive center-block">
+                        <input id="C1" type="button" value="茶餐C - 烘肉桂焦糖三文治">
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-center"><img src="./img/sandwich_2.png" class="img-responsive center-block">
+                        <input id="C2" type="button" value="茶餐C - 烘土匪芝士三文治">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><img src="./img/rice_ricenoodle.png" class="img-responsive center-block">
+                    <p class="text-center"><input id="D1" type="button" value="茶餐D - 白飯 + 迷你米線"></p>
+                </div>
+                <div class="col-md-6"><img src="./img/porkrice_ricenoodle.png" class="img-responsive center-block">
+                    <p class="text-center"><input id="D2" type="button" value="茶餐D - 三哥乍醬飯 + 迷你米線"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"><img src="./img/big_ricenoodle.png" class="img-responsive center-block">
+                    <p class="text-center"><input id="E" type="button" value="茶餐E - 過小橋米線 ($46)"></p>
+                </div>
+            </div>
+        </div>
+        <div id="A1_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($28)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+        </div>
+        <div id="A1_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_2_1" type="button" value="雙餸清湯小食 ($25)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_2_2" type="button" value="三餸清湯小食 ($29)"></p>
+            </div>
+        </div>
+        <div id="A1_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_3_1" type="button" value="雙拼一人小食 ($32)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A1_3_2" type="button" value="三拼一人小食 ($38)"></p>
+            </div>
+        </div>
+        <div id="A2_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($33)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+        </div>
+        <div id="A2_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_2_1" type="button" value="雙餸清湯小食 ($30)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_2_2" type="button" value="三餸清湯小食 ($34)"></p>
+            </div>
+        </div>
+        <div id="A2_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_3_1" type="button" value="雙拼一人小食 ($37)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="A2_3_2" type="button" value="三拼一人小食 ($43)"></p>
+            </div>
+        </div>
+        <div id="B1_soup" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_clean" type="button" value="清湯底"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_spicy" type="button" value="麻辣湯底 (+$1)"></p>
+            </div>
+        </div>
+        <div id="B1_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($38)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_drinks_only" type="button" value="配飲品 ($29)"></p>
+            </div>
+        </div>
+        <div id="B1_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_2_1" type="button" value="雙餸清湯小食 ($35)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_2_2" type="button" value="三餸清湯小食 ($39)"></p>
+            </div>
+        </div>
+        <div id="B1_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_3_1" type="button" value="雙拼一人小食 ($42)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B1_3_2" type="button" value="三拼一人小食 ($48)"></p>
+            </div>
+        </div>
+        <div id="B2_soup" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_clean" type="button" value="清湯底"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_spicy" type="button" value="麻辣湯底 (+$1)"></p>
+            </div>
+        </div>
+        <div id="B2_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($42)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_drinks_only" type="button" value="配飲品 ($33)"></p>
+            </div>
+        </div>
+        <div id="B2_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_2_1" type="button" value="雙餸清湯小食 ($39)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_2_2" type="button" value="三餸清湯小食 ($43)"></p>
+            </div>
+        </div>
+        <div id="B2_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_3_1" type="button" value="雙拼一人小食 ($46)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="B2_3_2" type="button" value="三拼一人小食 ($52)"></p>
+            </div>
+        </div>
+        <div id="C1_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($33)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_drinks_only" type="button" value="配飲品 ($21)"></p>
+            </div>
+        </div>
+        <div id="C1_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_2_1" type="button" value="雙餸清湯小食 ($30)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_2_2" type="button" value="三餸清湯小食 ($34)"></p>
+            </div>
+        </div>
+        <div id="C1_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_3_1" type="button" value="雙拼一人小食 ($37)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C1_3_2" type="button" value="三拼一人小食 ($43)"></p>
+            </div>
+        </div>
+        <div id="C2_1" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_1_1" type="button" value="配清湯小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_1_2" type="button" value="配十三香辣小食三寶 + 飲品 ($42)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_1_3" type="button" value="配一人小食 + 飲品"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_drinks_only" type="button" value="配飲品 ($30)"></p>
+            </div>
+        </div>
+        <div id="C2_2" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_2_1" type="button" value="雙餸清湯小食 ($39)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_2_2" type="button" value="三餸清湯小食 ($43)"></p>
+            </div>
+        </div>
+        <div id="C2_3" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_3_1" type="button" value="雙拼一人小食 ($46)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="C2_3_2" type="button" value="三拼一人小食 ($52)"></p>
+            </div>
+        </div>
+        <div id="D1_sides" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="D1_sides_2" type="button" value="雙餸 ($35)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="D1_sides_3" type="button" value="三餸 ($39)"></p>
+            </div>
+        </div>
+        <div id="D1_soup" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="D1_clean" type="button" value="清湯底"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="D1_spicy" type="button" value="麻辣湯底 (+$1)"></p>
+            </div>
+        </div>
+        <div id="D2_sides" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="D2_sides_2" type="button" value="雙餸 ($40)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="D2_sides_3" type="button" value="三餸 ($44)"></p>
+            </div>
+        </div>
+        <div id="D2_soup" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="D2_clean" type="button" value="清湯底"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="D2_spicy" type="button" value="麻辣湯底 (+$1)"></p>
+            </div>
+        </div>
+        <div id="E_soup" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="E_clean" type="button" value="清湯底"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="E_spicy" type="button" value="麻辣/煳辣/酸辣湯底 (+$1)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="E_tomato" type="button" value="番茄/(重慶)三哥酸辣湯底 (+$2)"></p>
+            </div>
+        </div>
+        <div id="E_noodle" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="E_rice_noodle" type="button" value="米線"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="E_potato_noodle" type="button" value="薯粉 (+$2)"></p>
+            </div>
+        </div>
+        <div id="drinks" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="hot" type="button" value="熱飲"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="cold" type="button" value="凍飲 / 汽水 (+$3)"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="special" type="button" value="特飲 (+$6)"></p>
+            </div>
+        </div>
+        <div id="location" class="row" style="display:none;">
+            <div class="col-md-12">
+                <p class="text-center"><input id="eatin" type="button" value="堂食"></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center"><input id="takeaway" type="button" value="外賣 (+$2)"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center"><input id="reset" type="button" value="重選"></p>
+            </div>
+        </div>
+        <div class="author">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">By 薩詩</p>
+                    <p class="text-center">Contact: <a href="mailto:sarssee421@gmail.com">sarssee421@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var choice = document.getElementById("choice");
+        var A1 = document.getElementById("A1");
+        A1.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐A - 白飯 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('A1_1').style.display = "block";
+        }
+
+        var A1_1_1 = document.getElementById("A1_1_1");
+        var A1_1_2 = document.getElementById("A1_1_2");
+        var A1_1_3 = document.getElementById("A1_1_3");
+        A1_1_1.onclick = function () {
+            document.getElementById('A1_1').style.display = "none";
+            document.getElementById('A1_2').style.display = "block";
+        }
+        A1_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+28');
+            document.getElementById('A1_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A1_1_3.onclick = function () {
+            document.getElementById('A1_1').style.display = "none";
+            document.getElementById('A1_3').style.display = "block";
+        }
+
+        var A1_2_1 = document.getElementById("A1_2_1");
+        var A1_2_2 = document.getElementById("A1_2_2");
+        A1_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+25');
+            document.getElementById('A1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A1_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+29');
+            document.getElementById('A1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var A1_3_1 = document.getElementById("A1_3_1");
+        var A1_3_2 = document.getElementById("A1_3_2");
+        A1_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+32');
+            document.getElementById('A1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A1_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+38');
+            document.getElementById('A1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var A2 = document.getElementById("A2");
+        A2.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐A - 三哥乍醬飯 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('A2_1').style.display = "block";
+        }
+
+        var A2_1_1 = document.getElementById("A2_1_1");
+        var A2_1_2 = document.getElementById("A2_1_2");
+        var A2_1_3 = document.getElementById("A2_1_3");
+        A2_1_1.onclick = function () {
+            document.getElementById('A2_1').style.display = "none";
+            document.getElementById('A2_2').style.display = "block";
+        }
+        A2_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+33');
+            document.getElementById('A2_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A2_1_3.onclick = function () {
+            document.getElementById('A2_1').style.display = "none";
+            document.getElementById('A2_3').style.display = "block";
+        }
+
+        var A2_2_1 = document.getElementById("A2_2_1");
+        var A2_2_2 = document.getElementById("A2_2_2");
+        A2_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+30');
+            document.getElementById('A2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A2_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+34');
+            document.getElementById('A2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var A2_3_1 = document.getElementById("A2_3_1");
+        var A2_3_2 = document.getElementById("A2_3_2");
+        A2_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+37');
+            document.getElementById('A2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        A2_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+43');
+            document.getElementById('A2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B1 = document.getElementById("B1");
+        B1.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐B - 迷你兩餸米線 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('B1_soup').style.display = "block";
+        }
+
+        var B1_clean = document.getElementById("B1_clean");
+        var B1_spicy = document.getElementById("B1_spicy");
+        B1_clean.onclick = function () {
+            choice.appendChild(document.createTextNode("(清湯底) "));
+            document.getElementById('B1_soup').style.display = "none";
+            document.getElementById('B1_1').style.display = "block";
+
+        }
+        B1_spicy.onclick = function () {
+            choice.appendChild(document.createTextNode("(麻辣湯底) "));
+            document.getElementById('B1_soup').style.display = "none";
+            document.getElementById('B1_1').style.display = "block";
+            document.getElementById('display').value = eval(display.value + '+1');
+        }
+
+        var B1_1_1 = document.getElementById("B1_1_1");
+        var B1_1_2 = document.getElementById("B1_1_2");
+        var B1_1_3 = document.getElementById("B1_1_3");
+        var B1_drinks_only = document.getElementById("B1_drinks_only");
+        B1_1_1.onclick = function () {
+            document.getElementById('B1_1').style.display = "none";
+            document.getElementById('B1_2').style.display = "block";
+        }
+        B1_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+38');
+            document.getElementById('B1_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B1_1_3.onclick = function () {
+            document.getElementById('B1_1').style.display = "none";
+            document.getElementById('B1_3').style.display = "block";
+        }
+        B1_drinks_only.onclick = function () {
+            document.getElementById('display').value = eval(display.value + '+29');
+            document.getElementById('B1_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B1_2_1 = document.getElementById("B1_2_1");
+        var B1_2_2 = document.getElementById("B1_2_2");
+        B1_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+35');
+            document.getElementById('B1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B1_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+39');
+            document.getElementById('B1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B1_3_1 = document.getElementById("B1_3_1");
+        var B1_3_2 = document.getElementById("B1_3_2");
+        B1_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+42');
+            document.getElementById('B1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B1_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+48');
+            document.getElementById('B1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B2 = document.getElementById("B2");
+        B2.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐B - 迷你三餸米線 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('B2_soup').style.display = "block";
+        }
+
+        var B2_clean = document.getElementById("B2_clean");
+        var B2_spicy = document.getElementById("B2_spicy");
+        B2_clean.onclick = function () {
+            choice.appendChild(document.createTextNode("(清湯底) "));
+            document.getElementById('B2_soup').style.display = "none";
+            document.getElementById('B2_1').style.display = "block";
+
+        }
+        B2_spicy.onclick = function () {
+            choice.appendChild(document.createTextNode("(麻辣湯底) "));
+            document.getElementById('B2_soup').style.display = "none";
+            document.getElementById('B2_1').style.display = "block";
+            document.getElementById('display').value = eval(display.value + '+1');
+        }
+
+        var B2_1_1 = document.getElementById("B2_1_1");
+        var B2_1_2 = document.getElementById("B2_1_2");
+        var B2_1_3 = document.getElementById("B2_1_3");
+        var B2_drinks_only = document.getElementById("B2_drinks_only");
+        B2_1_1.onclick = function () {
+            document.getElementById('B2_1').style.display = "none";
+            document.getElementById('B2_2').style.display = "block";
+        }
+        B2_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+42');
+            document.getElementById('B2_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B2_1_3.onclick = function () {
+            document.getElementById('B2_1').style.display = "none";
+            document.getElementById('B2_3').style.display = "block";
+        }
+        B2_drinks_only.onclick = function () {
+            document.getElementById('display').value = eval(display.value + '+33');
+            document.getElementById('B2_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B2_2_1 = document.getElementById("B2_2_1");
+        var B2_2_2 = document.getElementById("B2_2_2");
+        B2_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+39');
+            document.getElementById('B2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B2_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+43');
+            document.getElementById('B2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var B2_3_1 = document.getElementById("B2_3_1");
+        var B2_3_2 = document.getElementById("B2_3_2");
+        B2_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+46');
+            document.getElementById('B2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        B2_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+52');
+            document.getElementById('B2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C1 = document.getElementById("C1");
+        C1.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐C - 烘肉桂焦糖三文治 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('C1_1').style.display = "block";
+        }
+
+        var C1_1_1 = document.getElementById("C1_1_1");
+        var C1_1_2 = document.getElementById("C1_1_2");
+        var C1_1_3 = document.getElementById("C1_1_3");
+        var C1_drinks_only = document.getElementById("C1_drinks_only");
+        C1_1_1.onclick = function () {
+            document.getElementById('C1_1').style.display = "none";
+            document.getElementById('C1_2').style.display = "block";
+        }
+        C1_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+33');
+            document.getElementById('C1_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C1_1_3.onclick = function () {
+            document.getElementById('C1_1').style.display = "none";
+            document.getElementById('C1_3').style.display = "block";
+        }
+        C1_drinks_only.onclick = function () {
+            document.getElementById('display').value = eval(display.value + '+21');
+            document.getElementById('C1_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C1_2_1 = document.getElementById("C1_2_1");
+        var C1_2_2 = document.getElementById("C1_2_2");
+        C1_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+30');
+            document.getElementById('C1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C1_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+34');
+            document.getElementById('C1_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C1_3_1 = document.getElementById("C1_3_1");
+        var C1_3_2 = document.getElementById("C1_3_2");
+        C1_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+37');
+            document.getElementById('C1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C1_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+43');
+            document.getElementById('C1_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C2 = document.getElementById("C2");
+        C2.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐C - 烘土匪芝士三文治 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('C2_1').style.display = "block";
+        }
+
+        var C2_1_1 = document.getElementById("C2_1_1");
+        var C2_1_2 = document.getElementById("C2_1_2");
+        var C2_1_3 = document.getElementById("C2_1_3");
+        var C2_drinks_only = document.getElementById("C2_drinks_only");
+        C2_1_1.onclick = function () {
+            document.getElementById('C2_1').style.display = "none";
+            document.getElementById('C2_2').style.display = "block";
+        }
+        C2_1_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配十三香辣小食三寶 "));
+            document.getElementById('display').value = eval(display.value + '+42');
+            document.getElementById('C2_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C2_1_3.onclick = function () {
+            document.getElementById('C2_1').style.display = "none";
+            document.getElementById('C2_3').style.display = "block";
+        }
+        C2_drinks_only.onclick = function () {
+            document.getElementById('display').value = eval(display.value + '+30');
+            document.getElementById('C2_1').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C2_2_1 = document.getElementById("C2_2_1");
+        var C2_2_2 = document.getElementById("C2_2_2");
+        C2_2_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+39');
+            document.getElementById('C2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C2_2_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三餸清湯小食 "));
+            document.getElementById('display').value = eval(display.value + '+43');
+            document.getElementById('C2_2').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var C2_3_1 = document.getElementById("C2_3_1");
+        var C2_3_2 = document.getElementById("C2_3_2");
+        C2_3_1.onclick = function () {
+            choice.appendChild(document.createTextNode("配雙拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+46');
+            document.getElementById('C2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        C2_3_2.onclick = function () {
+            choice.appendChild(document.createTextNode("配三拼一人小食 "));
+            document.getElementById('display').value = eval(display.value + '+52');
+            document.getElementById('C2_3').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var D1 = document.getElementById("D1");
+        D1.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐D - 白飯 + 迷你米線 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('D1_sides').style.display = "block";
+        }
+        var D1_sides_2 = document.getElementById("D1_sides_2");
+        var D1_sides_3 = document.getElementById("D1_sides_3");
+        D1_sides_2.onclick = function () {
+            choice.appendChild(document.createTextNode("(雙餸) "));
+            document.getElementById('display').value = eval(display.value + '+35');
+            document.getElementById('D1_sides').style.display = "none";
+            document.getElementById('D1_soup').style.display = "block";
+        }
+        D1_sides_3.onclick = function () {
+            choice.appendChild(document.createTextNode("(三餸) "));
+            document.getElementById('display').value = eval(display.value + '+39');
+            document.getElementById('D1_sides').style.display = "none";
+            document.getElementById('D1_soup').style.display = "block";
+        }
+        var D1_clean = document.getElementById("D1_clean");
+        var D1_spicy = document.getElementById("D1_spicy");
+        D1_clean.onclick = function () {
+            choice.appendChild(document.createTextNode("(清湯底) "));
+            document.getElementById('D1_soup').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+
+        }
+        D1_spicy.onclick = function () {
+            choice.appendChild(document.createTextNode("(麻辣湯底) "));
+            document.getElementById('D1_soup').style.display = "none";
+            document.getElementById('display').value = eval(display.value + '+1');
+            document.getElementById('drinks').style.display = "block";
+
+        }
+
+
+        var D2 = document.getElementById("D2");
+        D2.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐D - 三哥乍醬飯 + 迷你米線 "));
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('D2_sides').style.display = "block";
+        }
+        var D2_sides_2 = document.getElementById("D2_sides_2");
+        var D2_sides_3 = document.getElementById("D2_sides_3");
+        D2_sides_2.onclick = function () {
+            choice.appendChild(document.createTextNode("(雙餸) "));
+            document.getElementById('display').value = eval(display.value + '+40');
+            document.getElementById('D2_sides').style.display = "none";
+            document.getElementById('D2_soup').style.display = "block";
+        }
+        D2_sides_3.onclick = function () {
+            choice.appendChild(document.createTextNode("(三餸) "));
+            document.getElementById('display').value = eval(display.value + '+44');
+            document.getElementById('D2_sides').style.display = "none";
+            document.getElementById('D2_soup').style.display = "block";
+        }
+        var D2_clean = document.getElementById("D2_clean");
+        var D2_spicy = document.getElementById("D2_spicy");
+        D2_clean.onclick = function () {
+            choice.appendChild(document.createTextNode("(清湯底) "));
+            document.getElementById('D2_soup').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+        }
+        D2_spicy.onclick = function () {
+            choice.appendChild(document.createTextNode("(麻辣湯底) "));
+            document.getElementById('D2_soup').style.display = "none";
+            document.getElementById('display').value = eval(display.value + '+1');
+            document.getElementById('drinks').style.display = "block";
+        }
+
+        var E = document.getElementById("E");
+        E.onclick = function () {
+            choice.appendChild(document.createTextNode("茶餐E - 過小橋米線 "));
+            document.getElementById('display').value = eval(display.value + '+46');
+            document.getElementById('menu').style.display = "none";
+            document.getElementById('E_soup').style.display = "block";
+        }
+        var E_clean = document.getElementById("E_clean");
+        var E_spicy = document.getElementById("E_spicy");
+        var E_tomato = document.getElementById("E_tomato");
+        E_clean.onclick = function () {
+            choice.appendChild(document.createTextNode("(清湯底) "));
+            document.getElementById('E_soup').style.display = "none";
+            document.getElementById('E_noodle').style.display = "block";
+
+        }
+        E_spicy.onclick = function () {
+            choice.appendChild(document.createTextNode("(麻辣/煳辣/酸辣湯底) "));
+            document.getElementById('E_soup').style.display = "none";
+            document.getElementById('E_noodle').style.display = "block";
+            document.getElementById('display').value = eval(display.value + '+1');
+        }
+        E_tomato.onclick = function () {
+            choice.appendChild(document.createTextNode("(番茄/(重慶)三哥酸辣湯底) "));
+            document.getElementById('E_soup').style.display = "none";
+            document.getElementById('E_noodle').style.display = "block";
+            document.getElementById('display').value = eval(display.value + '+2');
+        }
+        var E_rice_noodle = document.getElementById("E_rice_noodle");
+        var E_potato_noodle = document.getElementById("E_potato_noodle");
+        E_rice_noodle.onclick = function () {
+            document.getElementById('E_noodle').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+
+        }
+        E_potato_noodle.onclick = function () {
+            choice.appendChild(document.createTextNode("轉薯粉 "));
+            document.getElementById('E_noodle').style.display = "none";
+            document.getElementById('drinks').style.display = "block";
+            document.getElementById('display').value = eval(display.value + '+2');
+        }
+
+        var hot = document.getElementById("hot");
+        var cold = document.getElementById("cold");
+        var special = document.getElementById("special");
+        hot.onclick = function () {
+            choice.appendChild(document.createTextNode("+ 熱飲 "));
+            document.getElementById('drinks').style.display = "none";
+            document.getElementById('location').style.display = "block";
+        }
+
+        cold.onclick = function () {
+            choice.appendChild(document.createTextNode("+ 凍飲 "));
+            document.getElementById('display').value = eval(display.value + '+3');
+            document.getElementById('drinks').style.display = "none";
+            document.getElementById('location').style.display = "block";
+        }
+
+        special.onclick = function () {
+            choice.appendChild(document.createTextNode("+ 特飲 "));
+            document.getElementById('display').value = eval(display.value + '+6');
+            document.getElementById('drinks').style.display = "none";
+            document.getElementById('location').style.display = "block";
+
+        }
+
+        var eatin = document.getElementById("eatin");
+        var takeaway = document.getElementById("takeaway");
+
+        eatin.onclick = function () {
+            choice.appendChild(document.createTextNode("(堂食)"));
+            document.getElementById('location').style.display = "none";
+        }
+
+        takeaway.onclick = function () {
+            choice.appendChild(document.createTextNode("(外賣)"));
+            document.getElementById('display').value = eval(display.value + '+2');
+            document.getElementById('location').style.display = "none";
+        }
+
+
+        var reset = document.getElementById("reset");
+        reset.onclick = function () {
+            choice.textContent = "";
+            document.getElementById('display').value = 0;
+            document.getElementById('menu').style.display = "block";
+            document.getElementById('A1_1').style.display = "none";
+            document.getElementById('A1_2').style.display = "none";
+            document.getElementById('A1_3').style.display = "none";
+            document.getElementById('A2_1').style.display = "none";
+            document.getElementById('A2_2').style.display = "none";
+            document.getElementById('A2_3').style.display = "none";
+            document.getElementById('B1_soup').style.display = "none";
+            document.getElementById('B1_1').style.display = "none";
+            document.getElementById('B1_2').style.display = "none";
+            document.getElementById('B1_3').style.display = "none";
+            document.getElementById('B2_soup').style.display = "none";
+            document.getElementById('B2_1').style.display = "none";
+            document.getElementById('B2_2').style.display = "none";
+            document.getElementById('B2_3').style.display = "none";
+            document.getElementById('C1_1').style.display = "none";
+            document.getElementById('C1_2').style.display = "none";
+            document.getElementById('C1_3').style.display = "none";
+            document.getElementById('C2_1').style.display = "none";
+            document.getElementById('C2_2').style.display = "none";
+            document.getElementById('C2_3').style.display = "none";
+            document.getElementById('D1_sides').style.display = "none";
+            document.getElementById('D1_soup').style.display = "none";
+            document.getElementById('D2_sides').style.display = "none";
+            document.getElementById('D2_soup').style.display = "none";
+            document.getElementById('E_soup').style.display = "none";
+            document.getElementById('E_noodle').style.display = "none";
+            document.getElementById('drinks').style.display = "none";
+            document.getElementById('location').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
